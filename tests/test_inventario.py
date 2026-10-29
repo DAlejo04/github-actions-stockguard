@@ -1,5 +1,12 @@
 import pytest
 from src.inventario import clasificar_stock
+from src.inventario import detectar_sobrestock
+
+def test_detectar_sobrestock_cuando_supera_maximo():
+    assert detectar_sobrestock(120, 100) is True
+
+def test_detectar_sobrestock_cuando_no_supera_maximo():
+    assert detectar_sobrestock(80, 100) is False
 
 def test_stock_agotado():
     assert clasificar_stock(0, 20) == "AGOTADO"
